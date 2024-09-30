@@ -1,13 +1,25 @@
 // Função para manipular o cadastro
 document
   .getElementById("registerForm")
-  ?.addEventListener("submit", function (e) {
-    e.preventDefault(); // Evita o comportamento padrão de submissão do formulário
+  ?.addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent form submission
 
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
+    // Password strength requirements: at least 8 characters, with letters, numbers, and special characters
+    const passwordRegex =
+      /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
+
+    if (!passwordRegex.test(password)) {
+      alert(
+        "A senha deve conter pelo menos 8 caracteres, incluindo letras, números e caracteres especiais."
+      );
+      return; // Stop form submission
+    }
+
+    // Store user data
     localStorage.setItem("user", JSON.stringify({ name, email, password }));
 
     alert("Cadastro realizado com sucesso!");
