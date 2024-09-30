@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IFOOD</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    #menu {
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      color: #555;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+      margin-top: 10px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    #resultado,
+    #erro {
+      text-align: center;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    #resultado {
+      background-color: #d4edda;
+      border: 1px solid #c3e6cb;
+    }
+
+    #erro {
+      background-color: #f8d7da;
+      border: 1px solid #f5c6cb;
+      color: #721c24;
+    }
+  </style>
+
+</head>
+
+<body>
+  <h1>Pedido de Comida</h1>
+  <div id="menu">
+    <h2>Seu Pedido:</h2>
+    <ul>
+      <li>Pizza - R$ 30,00</li>
+      <li>Burguer - R$ 20,00</li>
+      <li>Sushi - R$ 50,00</li>
+    </ul>
+    <button id="confirmar-pedido">Confirmar Pedido</button>
+  </div>
+
+  <div id="resultado" style="display: none;">
+    <h2>Seu Pedido foi Confirmado!</h2>
+    <p>A comida está a caminho!</p>
+  </div>
+
+  <div id="erro" style="display: none;" class="erro">
+    <h2>Erro!</h2>
+    <p>Dados de pagamento inválidos. Por favor, tente novamente.</p>
+  </div>
+
+  <script>
+    document.getElementById('confirmar-pedido').addEventListener('click', function () {
+
+      const pagamentoValido = true;
+
+      if (pagamentoValido) {
+
+        document.getElementById('menu').style.display = 'none';
+        document.getElementById('resultado').style.display = 'block';
+        document.getElementById('erro').style.display = 'none';
+      } else {
+
+        document.getElementById('menu').style.display = 'none';
+        document.getElementById('erro').style.display = 'block';
+        document.getElementById('resultado').style.display = 'none';
+      }
+    });</script>
+</body>
+
+</html>
